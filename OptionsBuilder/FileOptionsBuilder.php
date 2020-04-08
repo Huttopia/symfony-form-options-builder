@@ -30,7 +30,7 @@ class FileOptionsBuilder extends AbstractOptionsBuilder
      */
     public function setMultiple($multiple = true)
     {
-        return $this->setOption('multipel', $multiple);
+        return $this->setOption('multiple', $multiple);
     }
 
     /**
