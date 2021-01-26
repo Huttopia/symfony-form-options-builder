@@ -1,3 +1,7 @@
+# 4.3.0 (2021-01-25)
+
+- Add `RepeatedOptionsBuilder`
+
 # 4.2.0 (2020-04-02)
 
 - Add `Html5Trait` to `NumberOptionsBuilder`
