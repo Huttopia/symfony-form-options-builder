@@ -42,4 +42,19 @@ class RepeatedOptionsBuilder extends AbstractOptionsBuilder
     {
         return $this->removeOption('second_options');
     }
+
+    public function setType(string $type): OptionsBuilderInterface
+    {
+        return $this->setOption('type', $type);
+    }
+
+    public function getType(): string
+    {
+        return $this->getOption('type');
+    }
+
+    public function removeType(): OptionsBuilderInterface
+    {
+        return $this->removeOption('type');
+    }
 }
