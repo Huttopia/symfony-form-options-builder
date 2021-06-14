@@ -38,7 +38,7 @@ interface OptionsBuilderInterface
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/form.html#label
      */
-    public function setLabel(string $label): self;
+    public function setLabel($label): self;
 
     /**
      * @return $this

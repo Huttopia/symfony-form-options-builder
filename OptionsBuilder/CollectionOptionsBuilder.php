@@ -125,7 +125,7 @@ class CollectionOptionsBuilder extends AbstractOptionsBuilder
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/collection.html#entry-type
      */
-    public function setEntryType(FormTypeInterface $type): OptionsBuilderInterface
+    public function setEntryType(string $type): OptionsBuilderInterface
     {
         return $this->setOption('entry_type', $type);
     }
@@ -136,8 +136,7 @@ class CollectionOptionsBuilder extends AbstractOptionsBuilder
         return $this->setOption('entry_type', $type);
     }
 
-    /** @return string|FormTypeInterface */
-    public function getEntryType()
+    public function getEntryType(): string
     {
         return $this->getOption('entry_type');
     }

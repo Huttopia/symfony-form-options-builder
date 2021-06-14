@@ -53,7 +53,7 @@ trait ChoiceTypeTrait
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/choice.html#choice-label
      */
-    public function setChoiceLabel(string $label): OptionsBuilderInterface
+    public function setChoiceLabel($label): OptionsBuilderInterface
     {
         return $this->setOption('choice_label', $label);
     }
@@ -180,7 +180,7 @@ trait ChoiceTypeTrait
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/choice.html#choice-attr
      */
-    public function setChoiceAttr(array $attr): OptionsBuilderInterface
+    public function setChoiceAttr($attr): OptionsBuilderInterface
     {
         return $this->setOption('choice_attr', $attr);
     }
