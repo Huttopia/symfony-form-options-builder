@@ -1,95 +1,97 @@
 <?php
 
-declare(strict_types=1);
-
 namespace steevanb\SymfonyFormOptionsBuilder\OptionsBuilder;
 
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use steevanb\SymfonyFormOptionsBuilder\OptionsBuilder\Behavior\{
-    OptionsBuilderInterface,
-    AbstractOptionsBuilder
-};
 
 class DateTimeOptionsBuilder extends AbstractOptionsBuilder
 {
     use Behavior\DateTimeCommonTrait;
-    use Behavior\DateTrait;
-    use Behavior\TimeTrait;
-    use Behavior\Html5Trait;
+    use Behavior\DateTypeTrait;
+    use Behavior\TimeTypeTrait;
+    use Behavior\HTML5Trait;
 
-    public const WIDGET_CHOICE = 'choice';
-    public const WIDGET_TEXT = 'text';
-    public const WIDGET_SINGLE_TEXT = 'single_text';
+    const WIDGET_CHOICE = 'choice';
+    const WIDGET_TEXT = 'text';
+    const WIDGET_SINGLE_TEXT = 'single_text';
 
-    public static function getBuilderType(): string
+    /**
+     * @return string
+     */
+    public static function getBuilderType()
     {
         return DateTimeType::class;
     }
 
     /**
+     * @param string $format
+     * @return $this
+     * @link http://symfony.com/doc/3.0/reference/forms/types/datetime.html#format
+     */
+    public function setFormat($format)
+    {
+        return $this->setOption('format', $format);
+    }
+
+    /**
+     * @return string
+     */
+    public function getFormat()
+    {
+        return $this->getOption('format');
+    }
+
+    /**
+     * @param int|string $format
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/datetime.html#date-format
      */
-    public function setDateFormat(string $format): OptionsBuilderInterface
+    public function setDateFormat($format)
     {
         return $this->setOption('date_format', $format);
     }
 
-    /** @return $this */
-    public function setDateFormatCode(int $format): OptionsBuilderInterface
-    {
-        return $this->setOption('date_format', $format);
-    }
-
-    /** @return int|string|null */
+    /**
+     * @return int|string
+     */
     public function getDateFormat()
     {
         return $this->getOption('date_format');
     }
 
-    /** @return $this */
-    public function removeDateFormat(): OptionsBuilderInterface
-    {
-        return $this->removeOption('date_format');
-    }
-
     /**
+     * @param string $widget
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/datetime.html#date-widget
      */
-    public function setDateWidget(string $widget): OptionsBuilderInterface
+    public function setDateWidget($widget)
     {
         return $this->setOption('date_widget', $widget);
     }
 
-    public function getDateWidget(): ?string
+    /**
+     * @return string
+     */
+    public function getDateWidget()
     {
         return $this->getOption('date_widget');
     }
 
-    /** @return $this */
-    public function removeDateWidget(): OptionsBuilderInterface
-    {
-        return $this->removeOption('date_widget');
-    }
-
     /**
+     * @param string $widget
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/datetime.html#time-widget
      */
-    public function setTimeWidget(string $widget): OptionsBuilderInterface
+    public function setTimeWidget($widget)
     {
         return $this->setOption('time_widget', $widget);
     }
 
-    public function getTimeWidget(): ?string
+    /**
+     * @return string
+     */
+    public function getTimeWidget()
     {
         return $this->getOption('time_widget');
-    }
-
-    /** @return $this */
-    public function removeTimeWidget()
-    {
-        return $this->removeOption('time_widget');
     }
 }

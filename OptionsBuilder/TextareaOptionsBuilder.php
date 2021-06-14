@@ -1,15 +1,18 @@
 <?php
 
-declare(strict_types=1);
-
 namespace steevanb\SymfonyFormOptionsBuilder\OptionsBuilder;
 
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use steevanb\SymfonyFormOptionsBuilder\OptionsBuilder\Behavior\AbstractOptionsBuilder;
 
 class TextareaOptionsBuilder extends AbstractOptionsBuilder
 {
-    public static function getBuilderType(): string
+    use Behavior\AttrPlaceHolderTrait;
+    use Behavior\AutofocusTrait;
+
+    /**
+     * @return string
+     */
+    public static function getBuilderType()
     {
         return TextareaType::class;
     }

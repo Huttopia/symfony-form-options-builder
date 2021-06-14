@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace steevanb\SymfonyFormOptionsBuilder\OptionsBuilder;
 
 /**
@@ -16,7 +14,7 @@ class FixDisabledBugOptionsBuilder extends HiddenOptionsBuilder
     {
         $this
             ->setMapped(false)
-            ->disableLabel()
-            ->disableTranslationDomain();
+            ->setLabel(false)
+            ->setTranslationDomain(false);
     }
 }

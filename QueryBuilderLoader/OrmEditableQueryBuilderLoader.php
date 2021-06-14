@@ -1,9 +1,8 @@
 <?php
 
-declare(strict_types=1);
-
 namespace steevanb\SymfonyFormOptionsBuilder\QueryBuilderLoader;
 
+use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\ORMQueryBuilderLoader;
 
@@ -12,6 +11,10 @@ class OrmEditableQueryBuilderLoader extends ORMQueryBuilderLoader
     /** @var EditableQueryBuilderConfigInterface */
     protected $editableQueryBuilderConfig;
 
+    /**
+     * @param QueryBuilder $queryBuilder
+     * @param EditableQueryBuilderConfigInterface $editableQueryBuilderConfig
+     */
     public function __construct(
         QueryBuilder $queryBuilder,
         EditableQueryBuilderConfigInterface $editableQueryBuilderConfig
@@ -21,6 +24,9 @@ class OrmEditableQueryBuilderLoader extends ORMQueryBuilderLoader
         $this->editableQueryBuilderConfig = $editableQueryBuilderConfig;
     }
 
+    /**
+     * @return mixed
+     */
     public function getEntities()
     {
         $query = $this->getQueryBuilder()->getQuery();
@@ -31,7 +37,10 @@ class OrmEditableQueryBuilderLoader extends ORMQueryBuilderLoader
         return $query->execute();
     }
 
-    protected function getQueryBuilder(): QueryBuilder
+    /**
+     * @return QueryBuilder
+     */
+    protected function getQueryBuilder()
     {
         $reflectionProperty = new \ReflectionProperty(get_parent_class($this), 'queryBuilder');
         $reflectionProperty->setAccessible(true);

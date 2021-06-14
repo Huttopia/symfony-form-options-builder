@@ -1,169 +1,177 @@
 <?php
 
-declare(strict_types=1);
-
 namespace steevanb\SymfonyFormOptionsBuilder\OptionsBuilder;
 
+use steevanb\SymfonyFormOptionsBuilder\Behavior\ByReferenceTrait;
+use steevanb\SymfonyFormOptionsBuilder\Behavior\OptionAccessorsTrait;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use steevanb\SymfonyFormOptionsBuilder\OptionsBuilder\Behavior\{
-    AbstractOptionsBuilder,
-    ByReferenceTrait,
-    OptionsBuilderInterface
-};
 use Symfony\Component\Form\FormTypeInterface;
 
 class CollectionOptionsBuilder extends AbstractOptionsBuilder
 {
+    use OptionAccessorsTrait;
     use ByReferenceTrait;
 
-    public static function getBuilderType(): string
+    /**
+     * @return string
+     */
+    public static function getBuilderType()
     {
         return CollectionType::class;
     }
 
     /**
+     * @param bool $allow
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/collection.html#allow-add
      */
-    public function setAllowAdd(bool $allow = true): OptionsBuilderInterface
+    public function setAllowAdd($allow = true)
     {
         return $this->setOption('allow_add', $allow);
     }
 
-    public function getAllowAdd(): ?bool
+    /**
+     * @return bool
+     */
+    public function getAllowAdd()
     {
         return $this->getOption('allow_add');
     }
 
-    /** @return $this */
-    public function removeAllowAdd(): OptionsBuilderInterface
-    {
-        return $this->removeOption('allow_add');
-    }
-
     /**
+     * @param $allow
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/collection.html#allow-delete
      */
-    public function setAllowDelete(bool $allow = true): OptionsBuilderInterface
+    public function setAllowDelete($allow = true)
     {
         return $this->setOption('allow_delete', $allow);
     }
 
-    public function getAllowDelete(): ?bool
+    /**
+     * @return bool
+     */
+    public function getAllowDelete()
     {
         return $this->getOption('allow_delete');
     }
 
-    /** @return $this */
-    public function removeAllowDelete(): OptionsBuilderInterface
-    {
-        return $this->removeOption('allow_delete');
-    }
-
     /**
+     * @param bool $delete
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/collection.html#delete-empty
      */
-    public function setDeleteEmpty(bool $delete = true): OptionsBuilderInterface
+    public function setDeleteEmpty($delete = true)
     {
         return $this->setOption('delete_empty', $delete);
     }
 
-    public function getDeleteEmpty(): ?bool
+    /**
+     * @return bool
+     */
+    public function getDeleteEmpty()
     {
         return $this->getOption('delete_empty');
     }
 
-    /** @return $this */
-    public function removeDeleteEmpty(): OptionsBuilderInterface
-    {
-        return $this->removeOption('delete_empty');
-    }
-
     /**
+     * @param bool $prototype
+     * @param bool $setAllowAdd
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/collection.html#prototype
      */
-    public function setPrototype(bool $prototype = true): OptionsBuilderInterface
+    public function setPrototype($prototype = true, $setAllowAdd = true)
     {
-        return $this->setOption('prototype', $prototype);
+        $this->setOption('prototype', $prototype);
+        if ($prototype && $setAllowAdd) {
+            $this->setAllowAdd();
+        }
+
+        return $this;
     }
 
-    public function getPrototype(): ?bool
+    /**
+     * @return bool
+     */
+    public function getPrototype()
     {
         return $this->getOption('prototype');
     }
 
-    /** @return $this */
-    public function removePrototype(): OptionsBuilderInterface
-    {
-        return $this->removeOption('prototype');
-    }
-
     /**
+     * @param string $name
+     * @param bool $setAllowAdd
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/collection.html#prototype-name
      */
-    public function setPrototypeName(string $name): OptionsBuilderInterface
+    public function setPrototypeName($name, $setAllowAdd = true)
     {
-        return $this->setOption('prototype_name', $name);
-    }
+        $this->setOption('prototype_name', $name);
+        if ($setAllowAdd) {
+            $this->setPrototype();
+        }
 
-    public function getPrototypeName(): ?string
-    {
-        return $this->getOption('prototype_name');
-    }
-
-    /** @return $this */
-    public function removePrototypeName(): OptionsBuilderInterface
-    {
-        return $this->removeOption('prototype_name');
+        return $this;
     }
 
     /**
+     * @param string $type
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/collection.html#entry-type
+     * @since 2.8
      */
-    public function setEntryType(FormTypeInterface $type): OptionsBuilderInterface
+    public function setEntryType($type)
     {
         return $this->setOption('entry_type', $type);
     }
 
-    /** @return $this */
-    public function setEntryTypeClassname(string $type): OptionsBuilderInterface
-    {
-        return $this->setOption('entry_type', $type);
-    }
-
-    /** @return string|FormTypeInterface */
+    /**
+     * @return string
+     * @link http://symfony.com/doc/3.0/reference/forms/types/collection.html#entry-type
+     * @since 2.8
+     */
     public function getEntryType()
     {
         return $this->getOption('entry_type');
     }
 
-    /** @return $this */
-    public function removeEntryType(): OptionsBuilderInterface
+    /**
+     * @return $this
+     * @link http://symfony.com/doc/3.0/reference/forms/types/collection.html#entry-type
+     * @since 2.8
+     */
+    public function removeEntryType()
     {
         return $this->removeOption('entry_type');
     }
 
     /**
+     * @param array $options
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/collection.html#entry-options
+     * @since 2.8
      */
-    public function setEntryOptions(array $options): OptionsBuilderInterface
+    public function setEntryOptions(array $options)
     {
         return $this->setOption('entry_options', $options);
     }
 
-    public function getEntryOptions(): ?array
+    /**
+     * @return array|string
+     * @link http://symfony.com/doc/3.0/reference/forms/types/collection.html#entry-options
+     * @since 2.8
+     */
+    public function getEntryOptions()
     {
         return $this->getOption('entry_options');
     }
 
-    /** @return $this */
-    public function removeEntryOotions(): OptionsBuilderInterface
+    /**
+     * @return $this
+     * @link http://symfony.com/doc/3.0/reference/forms/types/collection.html#entry-options
+     * @since 2.8
+     */
+    public function removeEntryOotions()
     {
         return $this->removeOption('entry_options');
     }

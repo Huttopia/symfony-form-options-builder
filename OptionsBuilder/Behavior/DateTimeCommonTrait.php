@@ -1,116 +1,84 @@
 <?php
 
-declare(strict_types=1);
-
 namespace steevanb\SymfonyFormOptionsBuilder\OptionsBuilder\Behavior;
+
+use steevanb\SymfonyFormOptionsBuilder\Behavior\OptionAccessorsTrait;
 
 trait DateTimeCommonTrait
 {
-    abstract public function setOption(string $name, $value): OptionsBuilderInterface;
-
-    abstract public function getOption(string $name);
-
-    abstract public function removeOption(string $name): OptionsBuilderInterface;
+    use OptionAccessorsTrait;
+    use PlaceHolderTrait;
+    use AutofocusTrait;
 
     /**
-     * @param string|array $placeholder
-     * @return $this
-     * @link http://symfony.com/doc/3.0/reference/forms/types/datetime.html#placeholder
-     */
-    public function setPlaceHolder($placeholder): OptionsBuilderInterface
-    {
-        return $this->setOption('placeholder', $placeholder);
-    }
-
-    /** @return string|array|null */
-    public function getPlaceHolder()
-    {
-        return $this->getOption('placeholder');
-    }
-
-    /** @return $this */
-    public function removePlaceholder(): OptionsBuilderInterface
-    {
-        return $this->removeOption('placeholder');
-    }
-
-    /**
+     * @param string $input
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/datetime.html#input
      */
-    public function setInput(string $input): OptionsBuilderInterface
+    public function setInput($input)
     {
         return $this->setOption('input', $input);
     }
 
-    public function getInput(): ?string
+    /**
+     * @return string
+     */
+    public function getInput()
     {
         return $this->getOption('input');
     }
 
-    /** @return $this */
-    public function removeInput(): OptionsBuilderInterface
-    {
-        return $this->removeOption('input');
-    }
-
     /**
+     * @param string $timezone
      * @return $this
-     * @link http://symfony.com/doc/3.0/reference/forms/types/datetime.html#model-timezone
+     * @link http://symfony.com/doc/3.0/reference/forms/types/date.html#model-timezone
      */
-    public function setModelTimezone(string $timezone): OptionsBuilderInterface
+    public function setModelTimezone($timezone)
     {
         return $this->setOption('model_timezone', $timezone);
     }
 
-    public function getModelTimezone(): ?string
+    /**
+     * @return string
+     */
+    public function getModelTimezone()
     {
         return $this->getOption('model_timezone');
     }
 
-    /** @return $this */
-    public function removeModelTimezone(): OptionsBuilderInterface
-    {
-        return $this->removeOption('model_timezone');
-    }
-
     /**
+     * @param string $viewTimezone
      * @return $this
-     * @link http://symfony.com/doc/3.0/reference/forms/types/datetime.html#view-timezone
+     * @link http://symfony.com/doc/3.0/reference/forms/types/date.html#view-timezone
      */
-    public function setViewTimezone(string $viewTimezone): OptionsBuilderInterface
+    public function setViewTimezone($viewTimezone)
     {
         return $this->setOption('view_timezone', $viewTimezone);
     }
 
-    public function getViewTimezone(): ?string
+    /**
+     * @return string
+     */
+    public function getViewTimezone()
     {
         return $this->getOption('view_timezone');
     }
 
-    /** @return $this */
-    public function removeViewTimezone(): OptionsBuilderInterface
-    {
-        return $this->removeOption('view_timezone');
-    }
-
     /**
+     * @param string $widget
      * @return $this
-     * @link http://symfony.com/doc/3.0/reference/forms/types/datetime.html#widget
+     * @link http://symfony.com/doc/3.0/reference/forms/types/date.html#widget
      */
-    public function setWidget(string $widget): OptionsBuilderInterface
+    public function setWidget($widget)
     {
         return $this->setOption('widget', $widget);
     }
 
-    public function getWidget(): ?string
+    /**
+     * @return string
+     */
+    public function getWidget()
     {
         return $this->getOption('widget');
-    }
-
-    /** @return $this */
-    public function removeWidget(): OptionsBuilderInterface
-    {
-        return $this->removeOption('widget');
     }
 }

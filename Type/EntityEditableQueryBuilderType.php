@@ -1,10 +1,9 @@
 <?php
 
-declare(strict_types=1);
-
 namespace steevanb\SymfonyFormOptionsBuilder\Type;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\QueryBuilder;
 use steevanb\SymfonyFormOptionsBuilder\QueryBuilderLoader\EditableQueryBuilderConfigInterface;
 use steevanb\SymfonyFormOptionsBuilder\QueryBuilderLoader\OrmEditableQueryBuilderLoader;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -16,6 +15,9 @@ class EntityEditableQueryBuilderType extends EntityType implements EditableQuery
     /** @var callable|null */
     protected $queryCallBack;
 
+    /**
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         parent::configureOptions($resolver);
@@ -25,6 +27,10 @@ class EntityEditableQueryBuilderType extends EntityType implements EditableQuery
             ->setAllowedTypes('query_call_back', ['callable', 'null']);
     }
 
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $this->queryCallBack = $options['query_call_back'];
@@ -32,12 +38,21 @@ class EntityEditableQueryBuilderType extends EntityType implements EditableQuery
         parent::buildForm($builder, $options);
     }
 
+    /**
+     * @param ObjectManager $manager
+     * @param QueryBuilder $queryBuilder
+     * @param string $class
+     * @return OrmEditableQueryBuilderLoader
+     */
     public function getLoader(ObjectManager $manager, $queryBuilder, $class)
     {
         return new OrmEditableQueryBuilderLoader($queryBuilder, $this);
     }
 
-    public function getQueryCallBack(): ?callable
+    /**
+     * @return callable|null
+     */
+    public function getQueryCallBack()
     {
         return $this->queryCallBack;
     }

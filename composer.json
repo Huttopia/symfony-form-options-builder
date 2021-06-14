@@ -1,5 +1,5 @@
 {
-    "name": "steevanb/symfony-form-options-builder",
+    "name": "huttopia/symfony-form-options-builder",
     "license": "MIT",
     "type": "lib",
     "description": "buildForm() with objects instead of array",
@@ -7,7 +7,12 @@
         "psr-4": { "steevanb\\SymfonyFormOptionsBuilder\\": "" }
     },
     "require": {
-        "php": "^7.1",
-        "symfony/form": "^3.0||^4.0||^5.0"
-    }
+        "symfony/form": "^4|^5.1"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/huttopia/symfony-form-options-builder.git"
+        }
+    ]
 }

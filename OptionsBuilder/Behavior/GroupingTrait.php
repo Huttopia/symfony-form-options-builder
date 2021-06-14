@@ -1,36 +1,28 @@
 <?php
 
-declare(strict_types=1);
-
 namespace steevanb\SymfonyFormOptionsBuilder\OptionsBuilder\Behavior;
+
+use steevanb\SymfonyFormOptionsBuilder\Behavior\OptionAccessorsTrait;
 
 trait GroupingTrait
 {
-    abstract public function setOption(string $name, $value): OptionsBuilderInterface;
-
-    abstract public function getOption(string $name);
-
-    abstract public function removeOption(string $name): OptionsBuilderInterface;
+    use OptionAccessorsTrait;
 
     /**
-     * @param int|false $grouping
+     * @param false|int $grouping
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/integer.html#grouping
      */
-    public function setGrouping($grouping): OptionsBuilderInterface
+    public function setGrouping($grouping)
     {
         return $this->setOption('grouping', $grouping);
     }
 
-    /** @return int|false|null */
+    /**
+     * @return false|int
+     */
     public function getGrouping()
     {
         return $this->getOption('grouping');
-    }
-
-    /** @return $this */
-    public function removeGrouping(): OptionsBuilderInterface
-    {
-        return $this->removeOption('grouping');
     }
 }
