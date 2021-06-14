@@ -8,10 +8,6 @@ use Symfony\Component\Validator\Constraint;
 
 abstract class AbstractOptionsBuilder implements OptionsBuilderInterface
 {
-    use AttrPlaceHolderTrait;
-    use AutofocusTrait;
-    use AutocompleteTrait;
-
     protected $options = [];
 
     /** @return $this */
@@ -223,7 +219,7 @@ abstract class AbstractOptionsBuilder implements OptionsBuilderInterface
         return $this->removeOption('mapped');
     }
 
-    public function setLabel($label): OptionsBuilderInterface
+    public function setLabel(string $label): OptionsBuilderInterface
     {
         return $this->setOption('label', $label);
     }
