@@ -2,7 +2,7 @@
 
 namespace steevanb\SymfonyFormOptionsBuilder\OptionsBuilder;
 
-use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Persistence\ObjectRepository;
 use Doctrine\ORM\QueryBuilder;
 use steevanb\SymfonyFormOptionsBuilder\Behavior\ByReferenceTrait;
 use steevanb\SymfonyFormOptionsBuilder\Behavior\DataClassTrait;
