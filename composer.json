@@ -1,5 +1,5 @@
 {
-    "name": "huttopia/symfony-form-options-builder",
+    "name": "steevanb/symfony-form-options-builder",
     "license": "MIT",
     "type": "lib",
     "description": "buildForm() with objects instead of array",
