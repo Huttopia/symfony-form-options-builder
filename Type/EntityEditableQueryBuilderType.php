@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace steevanb\SymfonyFormOptionsBuilder\Type;
 
-use Doctrine\Persistence\ObjectManager;
+use Doctrine\Common\Persistence\ObjectManager;
 use steevanb\SymfonyFormOptionsBuilder\QueryBuilderLoader\EditableQueryBuilderConfigInterface;
 use steevanb\SymfonyFormOptionsBuilder\QueryBuilderLoader\OrmEditableQueryBuilderLoader;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
