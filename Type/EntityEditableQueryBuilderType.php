@@ -44,7 +44,7 @@ class EntityEditableQueryBuilderType extends EntityType implements EditableQuery
      * @param string $class
      * @return OrmEditableQueryBuilderLoader
      */
-    public function getLoader(ObjectManager $manager, $queryBuilder, $class)
+    public function getLoader(ObjectManager $manager, $queryBuilder, $class): OrmEditableQueryBuilderLoader
     {
         return new OrmEditableQueryBuilderLoader($queryBuilder, $this);
     }
