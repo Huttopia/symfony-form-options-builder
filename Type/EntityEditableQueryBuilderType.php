@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace steevanb\SymfonyFormOptionsBuilder\Type;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use steevanb\SymfonyFormOptionsBuilder\QueryBuilderLoader\EditableQueryBuilderConfigInterface;
 use steevanb\SymfonyFormOptionsBuilder\QueryBuilderLoader\OrmEditableQueryBuilderLoader;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -32,7 +32,7 @@ class EntityEditableQueryBuilderType extends EntityType implements EditableQuery
         parent::buildForm($builder, $options);
     }
 
-    public function getLoader(ObjectManager $manager, $queryBuilder, $class)
+    public function getLoader(ObjectManager $manager, $queryBuilder, $class): OrmEditableQueryBuilderLoader
     {
         return new OrmEditableQueryBuilderLoader($queryBuilder, $this);
     }

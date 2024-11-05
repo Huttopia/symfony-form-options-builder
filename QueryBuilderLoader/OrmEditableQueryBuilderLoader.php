@@ -21,7 +21,7 @@ class OrmEditableQueryBuilderLoader extends ORMQueryBuilderLoader
         $this->editableQueryBuilderConfig = $editableQueryBuilderConfig;
     }
 
-    public function getEntities()
+    public function getEntities(): array
     {
         $query = $this->getQueryBuilder()->getQuery();
         if (is_callable($this->editableQueryBuilderConfig->getQueryCallBack())) {
