@@ -9,7 +9,7 @@ trait BlockPrefixTrait
      * @link https://github.com/symfony/symfony/pull/16724
      * @since 2.8
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         $fullClassName = get_class($this);
         $className = ($pos = strrpos($fullClassName, '\\')) ? substr($fullClassName, $pos + 1) : $fullClassName;

@@ -16,7 +16,7 @@ class EntityEditableQueryBuilderType extends EntityType implements EditableQuery
     /** @var callable|null */
     protected $queryCallBack;
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);
 
@@ -25,7 +25,7 @@ class EntityEditableQueryBuilderType extends EntityType implements EditableQuery
             ->setAllowedTypes('query_call_back', ['callable', 'null']);
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $this->queryCallBack = $options['query_call_back'];
 
