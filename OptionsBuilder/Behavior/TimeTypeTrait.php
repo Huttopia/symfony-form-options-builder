@@ -24,7 +24,7 @@ trait TimeTypeTrait
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/time.html#hours
      */
-    public function setHours(array $hours = null)
+    public function setHours(?array $hours = null)
     {
         $this->setOption('hours', $hours);
         if (is_array($hours)) {
@@ -47,7 +47,7 @@ trait TimeTypeTrait
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/time.html#minutes
      */
-    public function setMinutes(array $minutes = null)
+    public function setMinutes(?array $minutes = null)
     {
         $this->setOption('minutes', $minutes);
         if (is_array($minutes)) {
@@ -70,7 +70,7 @@ trait TimeTypeTrait
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/time.html#seconds
      */
-    public function setSeconds(array $seconds = null)
+    public function setSeconds(?array $seconds = null)
     {
         $this->setOption('seconds', $seconds);
         if (is_array($seconds)) {

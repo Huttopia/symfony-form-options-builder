@@ -24,7 +24,7 @@ trait DateTypeTrait
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/date.html#days
      */
-    public function setDays(array $days = null)
+    public function setDays(?array $days = null)
     {
         $this->setOption('days', $days);
         if (is_array($days)) {
@@ -70,7 +70,7 @@ trait DateTypeTrait
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/date.html#months
      */
-    public function setMonths(array $months = null)
+    public function setMonths(?array $months = null)
     {
         $this->setOption('months', $months);
         if (is_array($months)) {
@@ -93,7 +93,7 @@ trait DateTypeTrait
      * @return $this
      * @link http://symfony.com/doc/3.0/reference/forms/types/date.html#years
      */
-    public function setYears(array $years = null)
+    public function setYears(?array $years = null)
     {
         $this->setOption('years', $years);
         if (is_array($years)) {
