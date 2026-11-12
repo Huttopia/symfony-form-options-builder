@@ -33,11 +33,7 @@ class OrmEditableQueryBuilderLoader extends ORMQueryBuilderLoader
 
     protected function getQueryBuilder(): QueryBuilder
     {
-        $reflectionProperty = new \ReflectionProperty(get_parent_class($this), 'queryBuilder');
-        $reflectionProperty->setAccessible(true);
-        $return = $reflectionProperty->getValue($this);
-        $reflectionProperty->setAccessible(false);
-
-        return $return;
+        // ReflectionProperty::setAccessible() has no effect since PHP 8.1 and is deprecated since PHP 8.5
+        return (new \ReflectionProperty(get_parent_class($this), 'queryBuilder'))->getValue($this);
     }
 }
